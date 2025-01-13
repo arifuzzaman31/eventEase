@@ -1,3 +1,4 @@
+```bash
 http://localhost:3000/api/events
 {
     "name": "Birthday Party",
@@ -5,7 +6,6 @@ http://localhost:3000/api/events
     "location": "Central Park",
     "maxAttendees": "100"
 }
-
 http://localhost:3000/api/auth/register
 {
     "username":"Masum",
@@ -18,3 +18,4 @@ http://localhost:3000/api/auth/login
     "email":"masum97@gmail.com",
     "password":"123456"
 }
+   ```
