@@ -6,7 +6,7 @@ export default function EventDetail() {
 
     return (
         <div>
-            <h1>Event Details for Event ID: {id}</h1>
+            <h1>Event Details for Event ID</h1>
         </div>
     );
 }

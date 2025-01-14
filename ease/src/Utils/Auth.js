@@ -1,0 +1,1 @@
+export const isAuthenticated = window.localStorage.getItem('_token') ? true : false;

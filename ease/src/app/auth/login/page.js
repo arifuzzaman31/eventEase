@@ -1,17 +1,20 @@
 'use client'
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation'
 import apiInstance from '../../api_inst';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isClient, setIsClient] = useState(false)
-
-    const handleFormSubmit = async () => {
+    const router = useRouter()
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
         try {
-            const response = await apiInstance.post('/auth/login', { email, password });
-            console.log(response.data)
-            localStorage.setItem('_token', response.data.token);
+            await apiInstance.post('/auth/login', { email, password }).then((response) => {
+                localStorage.setItem('_token', response.data.token);
+                router.push('/dashboard')
+            });
         } catch (err) {
             console.error(err);
         }
@@ -50,7 +53,7 @@ export default function Login() {
                         </div>
 
                         <div className='flex justify-center items-center mt-6'>
-                            <button
+                            <button type="submit"
                                 className={'bg-green py-2 px-4 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark'}
                             >
                                 Login
