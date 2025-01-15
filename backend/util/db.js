@@ -2,7 +2,6 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const fs = require('fs');
 
-// Singleton instance
 let dbInstance;
 
 const initializeDatabase = () => {
@@ -15,7 +14,6 @@ const initializeDatabase = () => {
         fs.mkdirSync(dbDir, { recursive: true });
     }
     const dbPath = path.resolve(dbDir, 'eventEase.db');
-    console.log('Database Path:', dbPath);
 
     dbInstance = new sqlite3.Database(dbPath, (err) => {
         if (err) {
