@@ -44,4 +44,19 @@ const initializeDatabase = () => {
     return dbInstance;
 };
 
-module.exports = { initializeDatabase };
+const initializeSocket = (io) => {
+    io.on('connection', (socket) => {
+        console.log('a user connected');
+    
+        socket.on('createMessage', (message) => {
+            console.log('Message received:', message);
+            io.emit('newMessage', message);
+        });
+    
+        socket.on('disconnect', () => {
+            console.log('user disconnected');
+        });
+    });
+}
+
+module.exports = { initializeDatabase,initializeSocket };
